@@ -125,7 +125,6 @@ int main()
 		  Particle best_particle;
 		  double weight_sum = 0.0;
 		  for (int i = 0; i < num_particles; ++i) {
-        // cout<<"I - "<<i<<endl<<"particle's weight - "<<particles[i].weight<<endl<<"highest_weight - "<<highest_weight<<endl;
 			if (particles[i].weight > highest_weight) {
 				highest_weight = particles[i].weight;
 				best_particle = particles[i];
@@ -134,8 +133,6 @@ int main()
 		  }
 		  cout << "highest w " << highest_weight << endl;
 		  cout << "average w " << weight_sum/num_particles << endl;
-      // cout<<"associations "<<pf.getAssociations(best_particle)<<endl;
-      // cout<<"Best Particle weight "<<best_particle.weight<<endl;
 
           json msgJson;
           msgJson["best_particle_x"] = best_particle.x;

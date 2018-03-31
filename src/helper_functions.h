@@ -76,6 +76,20 @@ inline double * getError(double gt_x, double gt_y, double gt_theta, double pf_x,
 	}
 	return error;
 }
+
+// Used to evaluate the gaussain probability in case of multi-variate distribution.
+inline double gauss_prob(double x, double x_mean, double x_std, double y, double y_mean, double y_std)
+{
+	double normalizing_const = 1/(2 * M_PI * x_std * y_std);
+	double sqr_err_x = pow((x - x_mean),2);
+	double sqr_err_y = pow((y - y_mean),2);
+	double var_x = x_std * x_std;
+	double var_y = y_std * y_std;
+	double raised_to = -0.5 *  ((sqr_err_x/var_x) + (sqr_err_y/var_y)); 
+	double prob = exp(raised_to) * normalizing_const;
+	return prob;
+}
+
 /* Reads map data from a file.
  * @param filename Name of file containing map data.
  * @output True if opening and reading file was successful
