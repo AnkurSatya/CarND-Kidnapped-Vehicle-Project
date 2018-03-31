@@ -13,6 +13,7 @@
 #include <math.h>
 #include <vector>
 #include "map.h"
+#include <iostream>
 
 // for portability of M_PI (Vis Studio, MinGW, etc.)
 #ifndef M_PI
@@ -46,6 +47,12 @@ struct LandmarkObs {
 	int id;				// Id of matching landmark in the map.
 	double x;			// Local (vehicle coordinates) x position of landmark observation [m]
 	double y;			// Local (vehicle coordinates) y position of landmark observation [m]
+	void set_values(int id_, double x_, double y_)
+	{
+		id = id_;
+		x = x_;
+		y = y_;
+	}
 };
 
 /*
@@ -69,7 +76,6 @@ inline double * getError(double gt_x, double gt_y, double gt_theta, double pf_x,
 	}
 	return error;
 }
-
 /* Reads map data from a file.
  * @param filename Name of file containing map data.
  * @output True if opening and reading file was successful

@@ -21,6 +21,15 @@ struct Particle {
 	std::vector<int> associations;
 	std::vector<double> sense_x;
 	std::vector<double> sense_y;
+	Particle(){}
+	Particle(int id_, double x_, double y_, double theta_, double weight_)
+	{
+		id = id_;
+		x = x_;
+		y =  y_;
+		theta = theta_;
+		weight = weight_;
+	}
 };
 
 
@@ -78,7 +87,7 @@ public:
 	 * @param predicted Vector of predicted landmark observations
 	 * @param observations Vector of landmark observations
 	 */
-	void dataAssociation(std::vector<LandmarkObs> predicted, std::vector<LandmarkObs>& observations);
+	void dataAssociation(std::vector<LandmarkObs> predicted, std::vector<LandmarkObs>& observat);
 	
 	/**
 	 * updateWeights Updates the weights for each particle based on the likelihood of the 
